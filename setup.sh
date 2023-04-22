@@ -7,6 +7,7 @@ brew install node
 cd ./frontend
 npm install
 npm run build
+npm install react-router-dom
 
 # Install required packages for backend
 cd ../backend
