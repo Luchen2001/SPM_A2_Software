@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
 
 # Install required packages for frontend
-brew install node
+brew install nodejs
 
 # Set up React app
 cd ./frontend
 npm install
-npm run build
 npm install react-router-dom
+npm run build
+
 
 # Install required packages for backend
 cd ../backend
