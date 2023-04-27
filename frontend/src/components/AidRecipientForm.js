@@ -1,35 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const AidRecipientForm = () => {
-    const initialGeneralInfo = {
-        name: '',
-        age: '',
-        previousAddress: '',
-        totalFamilyMembers: '',
-        partnerName: '',
-        partnerAge: '',
-      };
-      const initialPrivateInfo = {
-        nationality: '',
-        id1: '',
-        expiry1: '',
-        id2: '',
-        expiry2: '',
-        id3: '',
-        expiry3: '',
-        uploadedFiles: [],
-      };
-      const [generalInfo, setGeneralInfo] = useState(initialGeneralInfo);
-      const [privateInfo, setPrivateInfo] = useState(initialPrivateInfo);
+  const initialGeneralInfo = {
+    name: "",
+    age: "",
+    previousAddress: "",
+    totalFamilyMembers: "",
+    partnerName: "",
+    partnerAge: "",
+  };
+  const initialPrivateInfo = {
+    nationality: "",
+    id1: "",
+    expiry1: "",
+    id2: "",
+    expiry2: "",
+    id3: "",
+    expiry3: "",
+    uploadedFiles: [],
+  };
+  const [generalInfo, setGeneralInfo] = useState(initialGeneralInfo);
+  const [privateInfo, setPrivateInfo] = useState(initialPrivateInfo);
 
-    const handleFileUpload = (event) => {
-        /*
+  const handleFileUpload = (event) => {
+    /*
         setPrivateInfo({
         ...privateInfo,
         uploadedFiles: [...privateInfo.uploadedFiles, ...event.target.files],
         });
         */
-    };
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -37,44 +37,47 @@ const AidRecipientForm = () => {
     const combinedData = { generalInfo, privateInfo };
 
     try {
-      const response = await fetch('http://localhost:8000/update/recipients', {
-        method: 'POST',
+      const response = await fetch("http://localhost:8000/update/recipients", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(combinedData),
       });
 
       if (response.ok) {
-        console.log('Data successfully sent to the server');
+        console.log("Data successfully sent to the server");
         setGeneralInfo(initialGeneralInfo);
         setPrivateInfo(initialPrivateInfo);
       } else {
-        console.error('Error sending data to the server');
+        console.error("Error sending data to the server");
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error("Error:", error);
     }
   };
 
   return (
-    <div>
+    <div class="bd-example">
       <h2>General Information</h2>
       <form onSubmit={handleSubmit}>
-        <label>
-          Name:
+        <div>
+          <label>Name:</label>
           <input
-            type="text"
+            placeholder="Enter Name"
+            class="form-control"
             name="name"
             value={generalInfo.name}
             onChange={(e) =>
               setGeneralInfo({ ...generalInfo, name: e.target.value })
             }
           />
-        </label>
-        <label>
-          Age:
+        </div>
+        <div>
+          <label>Age:</label>
           <input
+            placeholder="Enter Age"
+            class="form-control"
             type="number"
             name="age"
             value={generalInfo.age}
@@ -82,10 +85,12 @@ const AidRecipientForm = () => {
               setGeneralInfo({ ...generalInfo, age: e.target.value })
             }
           />
-        </label>
-        <label>
-          Previous Address:
+        </div>
+        <div>
+          <label>Previous Address:</label>
           <input
+            placeholder="Enter Address"
+            class="form-control"
             type="text"
             name="previousAddress"
             value={generalInfo.previousAddress}
@@ -96,10 +101,12 @@ const AidRecipientForm = () => {
               })
             }
           />
-        </label>
-        <label>
-          Total Family Members:
+        </div>
+        <div>
+          <label>Total Family Members:</label>
           <input
+            placeholder="Enter Total Family Members"
+            class="form-control"
             type="number"
             name="totalFamilyMembers"
             value={generalInfo.totalFamilyMembers}
@@ -110,10 +117,12 @@ const AidRecipientForm = () => {
               })
             }
           />
-        </label>
-        <label>
-          Common Law Partner Name:
+        </div>
+        <div>
+          <label>Common Law Partner Name:</label>
           <input
+            placeholder="Enter Common Law Partner Name"
+            class="form-control"
             type="text"
             name="partnerName"
             value={generalInfo.partnerName}
@@ -121,10 +130,12 @@ const AidRecipientForm = () => {
               setGeneralInfo({ ...generalInfo, partnerName: e.target.value })
             }
           />
-        </label>
-        <label>
-          Common Law Partner Age:
+        </div>
+        <div>
+          <label>Common Law Partner Age:</label>
           <input
+            placeholder="Enter Common Law Partner Age"
+            class="form-control"
             type="number"
             name="partnerAge"
             value={generalInfo.partnerAge}
@@ -132,12 +143,14 @@ const AidRecipientForm = () => {
               setGeneralInfo({ ...generalInfo, partnerAge: e.target.value })
             }
           />
-        </label>
-
-      <h2>Private Information</h2>
-        <label>
-          Nationality:
+        </div>
+        <br></br>
+        <h2>Private Information</h2>
+        <div>
+          <label>Nationality:</label>
           <input
+            placeholder="Enter Nationality"
+            class="form-control"
             type="text"
             name="nationality"
             value={privateInfo.nationality}
@@ -145,10 +158,12 @@ const AidRecipientForm = () => {
               setPrivateInfo({ ...privateInfo, nationality: e.target.value })
             }
           />
-        </label>
-        <label>
-          Identity Document 1:
+        </div>
+        <div>
+          <label>Identity Document 1:</label>
           <input
+            placeholder="Enter Identity Document 1"
+            class="form-control"
             type="text"
             name="id1"
             value={privateInfo.id1}
@@ -156,10 +171,12 @@ const AidRecipientForm = () => {
               setPrivateInfo({ ...privateInfo, id1: e.target.value })
             }
           />
-        </label>
-        <label>
-          Expiry Date 1:
+        </div>
+        <div>
+          <label>Expiry Date 1:</label>
           <input
+            placeholder="Enter Expiry Date 1"
+            class="form-control"
             type="date"
             name="expiry1"
             value={privateInfo.expiry1}
@@ -167,10 +184,12 @@ const AidRecipientForm = () => {
               setPrivateInfo({ ...privateInfo, expiry1: e.target.value })
             }
           />
-        </label>
-        <label>
-          Identity Document 2:
+        </div>
+        <div>
+          <label>Identity Document 2:</label>
           <input
+            placeholder="Enter Identity Document 2"
+            class="form-control"
             type="text"
             name="id2"
             value={privateInfo.id2}
@@ -178,10 +197,12 @@ const AidRecipientForm = () => {
               setPrivateInfo({ ...privateInfo, id2: e.target.value })
             }
           />
-        </label>
-        <label>
-          Expiry Date 2:
+        </div>
+        <div>
+          <label>Expiry Date 2:</label>
           <input
+            placeholder="Enter Expiry Date 2"
+            class="form-control"
             type="date"
             name="expiry2"
             value={privateInfo.expiry2}
@@ -189,10 +210,12 @@ const AidRecipientForm = () => {
               setPrivateInfo({ ...privateInfo, expiry2: e.target.value })
             }
           />
-        </label>
-        <label>
-          Identity Document 3:
+        </div>
+        <div>
+          <label>Identity Document 3:</label>
           <input
+            placeholder="Enter Identity Document 3"
+            class="form-control"
             type="text"
             name="id3"
             value={privateInfo.id3}
@@ -200,10 +223,12 @@ const AidRecipientForm = () => {
               setPrivateInfo({ ...privateInfo, id3: e.target.value })
             }
           />
-        </label>
-        <label>
-          Expiry Date 3:
+        </div>
+        <div>
+          <label>Expiry Date 3:</label>
           <input
+            placeholder="Enter Expiry Date 3"
+            class="form-control"
             type="date"
             name="expiry3"
             value={privateInfo.expiry3}
@@ -211,19 +236,23 @@ const AidRecipientForm = () => {
               setPrivateInfo({ ...privateInfo, expiry3: e.target.value })
             }
           />
-        </label>
-        <label>
-          Upload Identity Documents:
+        </div>
+        <div>
+          <label>Upload Identity Documents:</label>
           <input
             type="file"
             accept="image/*"
             multiple
             onChange={handleFileUpload}
           />
-        </label>
-        <button type="submit">Submit</button>
+        </div>
+        <div>
+          <button class="btn btn-primary" type="submit">
+            Submit
+          </button>
+        </div>
       </form>
     </div>
-  )
+  );
 };
 export default AidRecipientForm;

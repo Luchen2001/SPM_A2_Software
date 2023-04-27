@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const AidDonorForm = () => {
   const initialDonorInfo = {
-    name: '',
-    age: '',
-    mailingAddress: '',
-    phoneNumber: '',
-    email: '',
-    preferredCommunication: '',
-    nationality: '',
-    id1: '',
-    expiry1: '',
-    id2: '',
-    expiry2: '',
-    id3: '',
-    expiry3: '',
+    name: "",
+    age: "",
+    mailingAddress: "",
+    phoneNumber: "",
+    email: "",
+    preferredCommunication: "",
+    nationality: "",
+    id1: "",
+    expiry1: "",
+    id2: "",
+    expiry2: "",
+    id3: "",
+    expiry3: "",
   };
 
   const [donorInfo, setDonorInfo] = useState(initialDonorInfo);
@@ -23,32 +23,34 @@ const AidDonorForm = () => {
     event.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:8000/update/donors', {
-        method: 'POST',
+      const response = await fetch("http://localhost:8000/update/donors", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(donorInfo),
       });
 
       if (response.ok) {
-        console.log('Donor data successfully sent to the server');
+        console.log("Donor data successfully sent to the server");
         setDonorInfo(initialDonorInfo);
       } else {
-        console.error('Error sending donor data to the server');
+        console.error("Error sending donor data to the server");
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error("Error:", error);
     }
   };
 
   return (
-    <div>
+    <div class="bd-example">
       <h2>Aid Donor Information</h2>
       <form onSubmit={handleSubmit}>
-        <label>
-          Name:
+        <div>
+          <label>Name:</label>
           <input
+            placeholder="Enter Name"
+            class="form-control"
             type="text"
             name="name"
             value={donorInfo.name}
@@ -56,10 +58,13 @@ const AidDonorForm = () => {
               setDonorInfo({ ...donorInfo, name: e.target.value })
             }
           />
-        </label>
-        <label>
-          Age:
+        </div>
+        <div>
+          <label>Age:</label>
+
           <input
+            placeholder="Enter Age"
+            class="form-control"
             type="number"
             name="age"
             value={donorInfo.age}
@@ -67,10 +72,12 @@ const AidDonorForm = () => {
               setDonorInfo({ ...donorInfo, age: e.target.value })
             }
           />
-        </label>
-        <label>
-          Mailing Address:
+        </div>
+        <div>
+          <label>Mailing Address:</label>
           <input
+            placeholder="Enter Mailing Address"
+            class="form-control"
             type="text"
             name="mailingAddress"
             value={donorInfo.mailingAddress}
@@ -78,10 +85,12 @@ const AidDonorForm = () => {
               setDonorInfo({ ...donorInfo, mailingAddress: e.target.value })
             }
           />
-        </label>
-        <label>
-          Phone Number:
+        </div>
+        <div>
+          <label>Phone Number:</label>
           <input
+            placeholder="Enter Phone Number"
+            class="form-control"
             type="tel"
             name="phoneNumber"
             value={donorInfo.phoneNumber}
@@ -89,10 +98,12 @@ const AidDonorForm = () => {
               setDonorInfo({ ...donorInfo, phoneNumber: e.target.value })
             }
           />
-        </label>
-        <label>
-          Email:
+        </div>
+        <div>
+          <label>Email:</label>
           <input
+            placeholder="Enter Email"
+            class="form-control"
             type="email"
             name="email"
             value={donorInfo.email}
@@ -100,25 +111,35 @@ const AidDonorForm = () => {
               setDonorInfo({ ...donorInfo, email: e.target.value })
             }
           />
-        </label>
-        <label>
-          Preferred Communication:
+        </div>
+        <div>
+          <label>Preferred Communication:</label>
+
           <select
+            class="form-control"
             name="preferredCommunication"
             value={donorInfo.preferredCommunication}
             onChange={(e) =>
-              setDonorInfo({ ...donorInfo, preferredCommunication: e.target.value })
+              setDonorInfo({
+                ...donorInfo,
+                preferredCommunication: e.target.value,
+              })
             }
           >
             <option value="">Choose...</option>
             <option value="email">Email</option>
             <option value="phone">Phone</option>
           </select>
-        </label>
+        </div>
+
+        <br></br>
         <h2>Private Information</h2>
-        <label>
-          Nationality:
+        <div>
+          <label>Nationality:</label>
+
           <input
+            placeholder="Enter Nationality"
+            class="form-control"
             type="text"
             name="nationality"
             value={donorInfo.nationality}
@@ -126,10 +147,13 @@ const AidDonorForm = () => {
               setDonorInfo({ ...donorInfo, nationality: e.target.value })
             }
           />
-        </label>
-        <label>
-          Identity Document 1:
+        </div>
+        <div>
+          <label>Identity Document 1:</label>
+
           <input
+            placeholder="Enter Identity Document 1"
+            class="form-control"
             type="text"
             name="id1"
             value={donorInfo.id1}
@@ -137,10 +161,12 @@ const AidDonorForm = () => {
               setDonorInfo({ ...donorInfo, id1: e.target.value })
             }
           />
-        </label>
-        <label>
-          Expiry Date 1:
+        </div>
+        <div>
+          <label>Expiry Date 1:</label>
           <input
+            placeholder="Enter Expiry Date 1"
+            class="form-control"
             type="date"
             name="expiry1"
             value={donorInfo.expiry1}
@@ -148,10 +174,12 @@ const AidDonorForm = () => {
               setDonorInfo({ ...donorInfo, expiry1: e.target.value })
             }
           />
-        </label>
-        <label>
-          Identity Document 2:
+        </div>
+        <div>
+          <label>Identity Document 2:</label>
           <input
+            placeholder="Enter Identity Document 2"
+            class="form-control"
             type="text"
             name="id2"
             value={donorInfo.id2}
@@ -159,10 +187,13 @@ const AidDonorForm = () => {
               setDonorInfo({ ...donorInfo, id2: e.target.value })
             }
           />
-        </label>
-        <label>
-          Expiry Date 2:
+        </div>
+        <div>
+          <label>Expiry Date 2:</label>
+
           <input
+            placeholder="Enter Expiry Date 2"
+            class="form-control"
             type="date"
             name="expiry2"
             value={donorInfo.expiry2}
@@ -170,10 +201,13 @@ const AidDonorForm = () => {
               setDonorInfo({ ...donorInfo, expiry2: e.target.value })
             }
           />
-        </label>
-        <label>
-          Identity Document 3:
+        </div>
+        <div>
+          <label>Identity Document 3:</label>
+
           <input
+            placeholder="Enter Identity Document 3"
+            class="form-control"
             type="text"
             name="id3"
             value={donorInfo.id3}
@@ -181,10 +215,13 @@ const AidDonorForm = () => {
               setDonorInfo({ ...donorInfo, id3: e.target.value })
             }
           />
-        </label>
-        <label>
-          Expiry Date 3:
+        </div>
+        <div>
+          <label>Expiry Date 3:</label>
+
           <input
+            placeholder="Enter Expiry Date 3"
+            class="form-control"
             type="date"
             name="expiry3"
             value={donorInfo.expiry3}
@@ -192,9 +229,11 @@ const AidDonorForm = () => {
               setDonorInfo({ ...donorInfo, expiry3: e.target.value })
             }
           />
-        </label>
-
-        <button type="submit">Submit</button>
+        </div>
+        <br></br>
+        <button class="btn btn-primary" type="submit">
+          Submit
+        </button>
       </form>
     </div>
   );
