@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import SuccessBar from "./SuccessBar";
 
 const RequestByKit = () => {
   const [recipients, setRecipients] = useState([]);
@@ -7,6 +8,7 @@ const RequestByKit = () => {
   const [aidItems, setAidItems] = useState([]);
   const [selectedItems, setSelectedItems] = useState([]);
   const [selectedAidKit, setSelectedAidKit] = useState("");
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     const fetchAidData = async () => {
@@ -67,6 +69,7 @@ const RequestByKit = () => {
       });
 
       if (response.ok) {
+        setShow(true);
         console.log("Request aid data successfully sent to the server");
         // Reset form fields
         setSelectedRecipient("");
@@ -128,6 +131,10 @@ const RequestByKit = () => {
           >
             Submit
           </button>
+        </div>
+        <br></br>
+        <div>
+          <SuccessBar show={show} setShow={setShow} />
         </div>
       </form>
       {selectedItems.length > 0 && (

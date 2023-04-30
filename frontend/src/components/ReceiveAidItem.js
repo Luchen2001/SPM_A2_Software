@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import SuccessBar from "./SuccessBar";
 
 const ReceiveAidItems = () => {
   const [donors, setDonors] = useState([]);
@@ -8,6 +9,8 @@ const ReceiveAidItems = () => {
   const [items, setItems] = useState([]);
   const [selectedItems, setSelectedItems] = useState([]);
   const [notes, setNotes] = useState("");
+  const [show, setShow] = useState(false);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -73,6 +76,7 @@ const ReceiveAidItems = () => {
       );
 
       if (response.ok) {
+        setShow(true);
         console.log("Received aid items successfully sent to the server");
         setSelectedDonor("");
         setSelectedItems([]);
@@ -149,6 +153,10 @@ const ReceiveAidItems = () => {
           <button class="btn btn-primary" type="submit">
             Submit
           </button>
+        </div>
+        <br></br>
+        <div>
+          <SuccessBar show={show} setShow={setShow} />
         </div>
       </form>
 

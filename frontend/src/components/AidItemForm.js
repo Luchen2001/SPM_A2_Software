@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
+import SuccessBar from "./SuccessBar";
 
 const AidItemForm = () => {
   const [name, setName] = useState("");
@@ -8,9 +9,8 @@ const AidItemForm = () => {
   const [assignedKit, setAssignedKit] = useState("");
   const [categories, setCategories] = useState([]);
   const [kits, setKits] = useState([]);
-
+  const [show, setShow] = useState(false);
   const [type, setType] = useState("food");
-
   const [expiryDate, setExpiryDate] = useState(""); // new state for expiry date input
   const [mainIngredients, setMainIngredients] = useState("");
   const [allergenInfo, setAllergenInfo] = useState("");
@@ -61,7 +61,6 @@ const AidItemForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     const newItem = {
       name,
       category,
@@ -82,6 +81,7 @@ const AidItemForm = () => {
       });
 
       if (response.ok) {
+        setShow(true);
         console.log("Aid item successfully created");
         setName("");
         setCategory("");
@@ -237,6 +237,10 @@ const AidItemForm = () => {
           <button class="btn btn-primary" type="submit">
             Create Aid Item
           </button>
+        </div>
+        <br></br>
+        <div>
+          <SuccessBar show={show} setShow={setShow} />
         </div>
       </form>
     </div>

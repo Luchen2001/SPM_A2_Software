@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import SuccessBar from "./SuccessBar";
 
 const DonorOrganizationForm = () => {
+  const [show, setShow] = useState(false);
+
   const initialOrganizationInfo = {
     name: "",
     headquartersAddress: "",
@@ -28,6 +31,7 @@ const DonorOrganizationForm = () => {
       );
 
       if (response.ok) {
+        setShow(true);
         console.log("Organization data successfully sent to the server");
         setOrganizationInfo(initialOrganizationInfo);
       } else {
@@ -111,6 +115,10 @@ const DonorOrganizationForm = () => {
           <button class="btn btn-primary" type="submit">
             Submit
           </button>
+        </div>
+        <br></br>
+        <div>
+          <SuccessBar show={show} setShow={setShow} />
         </div>
       </form>
     </div>

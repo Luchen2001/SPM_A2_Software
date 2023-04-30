@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import SuccessBar from "./SuccessBar";
 
 const AidDonorForm = () => {
   const initialDonorInfo = {
@@ -18,10 +19,9 @@ const AidDonorForm = () => {
   };
 
   const [donorInfo, setDonorInfo] = useState(initialDonorInfo);
-
+  const [show, setShow] = useState(false);
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     try {
       const response = await fetch("http://localhost:8000/update/donors", {
         method: "POST",
@@ -34,6 +34,7 @@ const AidDonorForm = () => {
       if (response.ok) {
         console.log("Donor data successfully sent to the server");
         setDonorInfo(initialDonorInfo);
+        setShow(true);
       } else {
         console.error("Error sending donor data to the server");
       }
@@ -234,6 +235,11 @@ const AidDonorForm = () => {
         <button class="btn btn-primary" type="submit">
           Submit
         </button>
+        <br></br>
+        <br></br>
+        <div>
+          <SuccessBar show={show} setShow={setShow} />
+        </div>
       </form>
     </div>
   );

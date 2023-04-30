@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import SuccessBar from "./SuccessBar";
 
 const AidRecipientForm = () => {
   const initialGeneralInfo = {
@@ -21,6 +22,7 @@ const AidRecipientForm = () => {
   };
   const [generalInfo, setGeneralInfo] = useState(initialGeneralInfo);
   const [privateInfo, setPrivateInfo] = useState(initialPrivateInfo);
+  const [show, setShow] = useState(false);
 
   const handleFileUpload = (event) => {
     /*
@@ -46,6 +48,7 @@ const AidRecipientForm = () => {
       });
 
       if (response.ok) {
+        setShow(true);
         console.log("Data successfully sent to the server");
         setGeneralInfo(initialGeneralInfo);
         setPrivateInfo(initialPrivateInfo);
@@ -250,6 +253,10 @@ const AidRecipientForm = () => {
           <button class="btn btn-primary" type="submit">
             Submit
           </button>
+        </div>
+        <br></br>
+        <div>
+          <SuccessBar show={show} setShow={setShow} />
         </div>
       </form>
     </div>

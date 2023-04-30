@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import SuccessBar from "./SuccessBar";
 
 const AidCategoryForm = () => {
   const [name, setName] = useState("");
   const [inventoryStatus, setInventoryStatus] = useState("Low");
   const [kitName, setKitName] = useState("");
+  const [show, setShow] = useState(false);
+  const [showKit, setShowKit] = useState(false);
 
   const handleSubmitCategory = async (event) => {
     event.preventDefault();
@@ -29,6 +32,7 @@ const AidCategoryForm = () => {
         console.log("Aid category successfully created");
         setName("");
         setInventoryStatus("Low");
+        setShow(true);
       } else {
         console.error("Error creating aid category");
       }
@@ -58,6 +62,7 @@ const AidCategoryForm = () => {
         if (kitResponse.ok) {
           console.log("Aid kit successfully created");
           setKitName("");
+          setShowKit(true);
         } else {
           console.error("Error creating aid kit");
         }
@@ -99,7 +104,13 @@ const AidCategoryForm = () => {
         </div>
         <br></br>
         <div>
-          <button class="btn btn-primary" type="submit">Create Aid Category</button>
+          <button class="btn btn-primary" type="submit">
+            Create Aid Category
+          </button>
+        </div>
+        <br></br>
+        <div>
+          <SuccessBar show={show} setShow={setShow} />
         </div>
       </form>
       <br></br>
@@ -118,7 +129,13 @@ const AidCategoryForm = () => {
         </div>
         <br></br>
         <div>
-          <button class="btn btn-primary" type="submit">Create Aid Kit</button>
+          <button class="btn btn-primary" type="submit">
+            Create Aid Kit
+          </button>
+        </div>
+        <br></br>
+        <div>
+          <SuccessBar show={showKit} setShow={setShowKit} />
         </div>
       </form>
     </div>
