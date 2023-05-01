@@ -16,7 +16,11 @@ const ReceiveAidItems = () => {
     const fetchData = async () => {
       const donorsResponse = await fetch("http://localhost:8000/data/donors");
       const donorsData = await donorsResponse.json();
-      setDonors(donorsData);
+      const donorsOrgResponse = await fetch("http://localhost:8000/data/organizations");
+      const donorOrgData = await donorsOrgResponse.json();
+      const donorList = [...donorsData, ...donorOrgData]
+      console.log(donorList);
+      setDonors(donorList);
 
       const categoriesResponse = await fetch(
         "http://localhost:8000/data/categories"

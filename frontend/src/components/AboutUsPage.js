@@ -11,7 +11,7 @@ const AboutUsPage = () => {
             <i class="fab fa-facebook-f"></i>
           </span>
         </a>
-        
+
         <a href="https://instagram.com/vr1.family?igshid=YmMyMTA2M2Y=" class="icon instagram">
           <div class="tooltip">Instagram</div>
           <span>

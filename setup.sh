@@ -7,7 +7,9 @@ brew install nodejs
 cd ./frontend
 npm install
 npm install react-router-dom
+npm install @mui/material
 npm run build
+
 
 
 # Install required packages for backend
