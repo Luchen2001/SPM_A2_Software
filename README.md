@@ -13,7 +13,7 @@
 
 'docker push luchen2001/spm:react'
 
-## How to run
+### How to run
 in the cloud server, copy the docker-compose.yml run: 
 
 'docker-compose up -d'
