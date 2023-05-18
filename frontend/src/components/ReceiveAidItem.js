@@ -14,21 +14,21 @@ const ReceiveAidItems = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const donorsResponse = await fetch("http://localhost:8000/data/donors");
+      const donorsResponse = await fetch("http://3.27.106.167:8000/data/donors");
       const donorsData = await donorsResponse.json();
-      const donorsOrgResponse = await fetch("http://localhost:8000/data/organizations");
+      const donorsOrgResponse = await fetch("http://3.27.106.167:8000/data/organizations");
       const donorOrgData = await donorsOrgResponse.json();
       const donorList = [...donorsData, ...donorOrgData]
       console.log(donorList);
       setDonors(donorList);
 
       const categoriesResponse = await fetch(
-        "http://localhost:8000/data/categories"
+        "http://3.27.106.167:8000/data/categories"
       );
       const categoriesData = await categoriesResponse.json();
       setCategories(categoriesData);
 
-      const itemsResponse = await fetch("http://localhost:8000/data/aid_items");
+      const itemsResponse = await fetch("http://3.27.106.167:8000/data/aid_items");
       const itemsData = await itemsResponse.json();
       setItems(itemsData);
     };
@@ -69,7 +69,7 @@ const ReceiveAidItems = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:8000/update/receive_aid_items",
+        "http://3.27.106.167:8000/update/receive_aid_items",
         {
           method: "POST",
           headers: {

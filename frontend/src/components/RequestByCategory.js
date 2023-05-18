@@ -14,17 +14,17 @@ const RequestByCategory = () => {
   useEffect(() => {
     const fetchAidData = async () => {
       const categoriesResponse = await fetch(
-        "http://localhost:8000/data/categories"
+        "http://3.27.106.167:8000/data/categories"
       );
       const categoriesData = await categoriesResponse.json();
       setCategories(categoriesData);
 
-      const itemsResponse = await fetch("http://localhost:8000/data/aid_items");
+      const itemsResponse = await fetch("http://3.27.106.167:8000/data/aid_items");
       const itemsData = await itemsResponse.json();
       setAidItems(itemsData);
 
       const recipientsResponse = await fetch(
-        "http://localhost:8000/data/recipients"
+        "http://3.27.106.167:8000/data/recipients"
       );
       const recipientsData = await recipientsResponse.json();
       setRecipients(recipientsData);
@@ -71,7 +71,7 @@ const RequestByCategory = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:8000/update/request_by_category",
+        "http://3.27.106.167:8000/update/request_by_category",
         {
           method: "POST",
           headers: {

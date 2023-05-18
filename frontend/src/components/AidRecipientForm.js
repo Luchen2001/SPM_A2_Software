@@ -39,7 +39,7 @@ const AidRecipientForm = () => {
     const combinedData = { generalInfo, privateInfo };
 
     try {
-      const response = await fetch("http://localhost:8000/update/recipients", {
+      const response = await fetch("http://3.27.106.167:8000/update/recipients", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -189,6 +189,15 @@ const AidRecipientForm = () => {
           />
         </div>
         <div>
+          <label>Upload Identity Document1:</label>
+          <input
+            type="file"
+            accept="image/*"
+            multiple
+            onChange={handleFileUpload}
+          />
+        </div>
+        <div>
           <label>Identity Document 2:</label>
           <input
             placeholder="Enter Identity Document 2"
@@ -212,6 +221,15 @@ const AidRecipientForm = () => {
             onChange={(e) =>
               setPrivateInfo({ ...privateInfo, expiry2: e.target.value })
             }
+          />
+        </div>
+        <div>
+          <label>Upload Identity Document2:</label>
+          <input
+            type="file"
+            accept="image/*"
+            multiple
+            onChange={handleFileUpload}
           />
         </div>
         <div>
@@ -241,7 +259,7 @@ const AidRecipientForm = () => {
           />
         </div>
         <div>
-          <label>Upload Identity Documents:</label>
+          <label>Upload Identity Document3:</label>
           <input
             type="file"
             accept="image/*"

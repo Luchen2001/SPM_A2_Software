@@ -16,10 +16,7 @@ from data_process import (
 )
 
 app = FastAPI()
-origins = [
-    "http://localhost:3000",
-    "localhost:3000",
-]
+origins = ["*"]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,

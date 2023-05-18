@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  backend:
+    image: luchen2001/spm:backend
+    ports:
+      - "8000:8000"
+    networks:
+      - spm_network
+
+  frontend:
+    image: luchen2001/spm:react
+    ports:
+      - "3000:3000"
+    networks:
+      - spm_network
+
+networks:
+  spm_network:
+    driver: bridge

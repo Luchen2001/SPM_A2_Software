@@ -20,7 +20,7 @@ const DonorOrganizationForm = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:8000/update/organizations",
+        "http://3.27.106.167:8000/update/organizations",
         {
           method: "POST",
           headers: {

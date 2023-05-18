@@ -18,7 +18,7 @@ const AidCategoryForm = () => {
 
     try {
       const categoryResponse = await fetch(
-        "http://localhost:8000/update/categories",
+        "http://3.27.106.167:8000/update/categories",
         {
           method: "POST",
           headers: {
@@ -51,7 +51,7 @@ const AidCategoryForm = () => {
       };
 
       try {
-        const kitResponse = await fetch("http://localhost:8000/update/kits", {
+        const kitResponse = await fetch("http://3.27.106.167:8000/update/kits", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

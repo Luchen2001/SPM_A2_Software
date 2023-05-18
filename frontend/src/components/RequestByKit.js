@@ -12,16 +12,16 @@ const RequestByKit = () => {
 
   useEffect(() => {
     const fetchAidData = async () => {
-      const kitsResponse = await fetch("http://localhost:8000/data/kits");
+      const kitsResponse = await fetch("http://3.27.106.167:8000/data/kits");
       const kitsData = await kitsResponse.json();
       setAidKits(kitsData);
 
-      const itemsResponse = await fetch("http://localhost:8000/data/aid_items");
+      const itemsResponse = await fetch("http://3.27.106.167:8000/data/aid_items");
       const itemsData = await itemsResponse.json();
       setAidItems(itemsData);
 
       const recipientsResponse = await fetch(
-        "http://localhost:8000/data/recipients"
+        "http://3.27.106.167:8000/data/recipients"
       );
       const recipientsData = await recipientsResponse.json();
       setRecipients(recipientsData);
@@ -60,7 +60,7 @@ const RequestByKit = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:8000/update/request_kit", {
+      const response = await fetch("http://3.27.106.167:8000/update/request_kit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -20,10 +20,18 @@ const AidDonorForm = () => {
 
   const [donorInfo, setDonorInfo] = useState(initialDonorInfo);
   const [show, setShow] = useState(false);
+  const handleFileUpload = (event) => {
+    /*
+        setPrivateInfo({
+        ...privateInfo,
+        uploadedFiles: [...privateInfo.uploadedFiles, ...event.target.files],
+        });
+        */
+  };
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch("http://localhost:8000/update/donors", {
+      const response = await fetch("http://3.27.106.167:8000/update/donors", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -177,6 +185,15 @@ const AidDonorForm = () => {
           />
         </div>
         <div>
+          <label>Upload Identity Document1:</label>
+          <input
+            type="file"
+            accept="image/*"
+            multiple
+            onChange={handleFileUpload}
+          />
+        </div>
+        <div>
           <label>Identity Document 2:</label>
           <input
             placeholder="Enter Identity Document 2"
@@ -201,6 +218,15 @@ const AidDonorForm = () => {
             onChange={(e) =>
               setDonorInfo({ ...donorInfo, expiry2: e.target.value })
             }
+          />
+        </div>
+        <div>
+          <label>Upload Identity Document2:</label>
+          <input
+            type="file"
+            accept="image/*"
+            multiple
+            onChange={handleFileUpload}
           />
         </div>
         <div>
@@ -229,6 +255,15 @@ const AidDonorForm = () => {
             onChange={(e) =>
               setDonorInfo({ ...donorInfo, expiry3: e.target.value })
             }
+          />
+        </div>
+        <div>
+          <label>Upload Identity Document3:</label>
+          <input
+            type="file"
+            accept="image/*"
+            multiple
+            onChange={handleFileUpload}
           />
         </div>
         <br></br>

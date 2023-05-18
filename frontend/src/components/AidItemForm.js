@@ -21,7 +21,7 @@ const AidItemForm = () => {
   useEffect(() => {
     async function fetchCategories() {
       try {
-        const response = await fetch("http://localhost:8000/data/categories");
+        const response = await fetch("http://3.27.106.167:8000/data/categories");
         const data = await response.json();
         setCategories(data);
       } catch (error) {
@@ -33,7 +33,7 @@ const AidItemForm = () => {
 
     async function fetchKits() {
       try {
-        const response = await fetch("http://localhost:8000/data/kits");
+        const response = await fetch("http://3.27.106.167:8000/data/kits");
         const data = await response.json();
         setKits(data);
       } catch (error) {
@@ -72,7 +72,7 @@ const AidItemForm = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:8000/update/aid_items", {
+      const response = await fetch("http://3.27.106.167:8000/update/aid_items", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
