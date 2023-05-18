@@ -14,10 +14,13 @@
 'docker push luchen2001/spm:react'
 
 ## How to run
-'in the cloud server, run: '
+in the cloud server, copy the docker-compose.yml run: 
 
 'docker-compose up -d'
 
 ## Run locally - check the local_version branch
+in the frontend folder, run:
 'npm start'
+
+in the backend folder, run:
 'python3 main.py'
